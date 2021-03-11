@@ -9,17 +9,27 @@
 
 // alert(myNameIs());
 
-//make it dependent on clicking the Save
-//button, similar issue to project9,
-//on page load, the console.log is triggered
+//Make it dependent on clicking the Save
+//button even if no text is entered.
+// Two issues:
+// 1. On page load, the alert is triggered immediately.
+// Removed the () when calling myName function.
 
-const form = document.querySelector("#text-form");
-form.onSubmit = alert(myNameIs());
+// 2. Using myName(fname
+// = "Julie", lname = "Oelker") directly in the
+// function parameters caused the first
+// parameter not to display in the alert,
+// got "Hi [onclickevent] Oelker!"
+// Fixed this by placing the values inside the
+// function.
 
-function myNameIs(first = "Julie", last = "Oelker") {
-  return `Hi, ${first} ${last}! 
-    
-  Click OK`;
+const btn = document.querySelector("#txt-btn");
+btn.addEventListener("click", myName);
+
+function myName(fname, lname) {
+  fname = "Julie";
+  lname = "Oelker";
+  alert(`Hi ${fname} ${lname}! Click OK!`);
 }
 
 // ridiculously simple IIFE
